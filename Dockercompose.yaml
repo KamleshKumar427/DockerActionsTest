@@ -1,14 +1,16 @@
 services:
-  # watchtower:
-  #   image: containrrr/watchtower
-  #   container_name: watchtower
-  #   environment:
-  #     - WATCHTOWER_POLL_INTERVAL=60 # Poll every 60 seconds
-  #   volumes:
-  #     - /var/run/docker.sock:/var/run/docker.sock
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    environment:
+      - WATCHTOWER_POLL_INTERVAL=60 # Poll every 60 seconds
+      - WATCHTOWER_LABEL_ENABLE=true # update only designated containers
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
 
   appservice:
     image: kkumar42721/githubactionimage:latest
     ports:
       - "3000:8080"
-    
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
