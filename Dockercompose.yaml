@@ -1,0 +1,14 @@
+services:
+  # watchtower:
+  #   image: containrrr/watchtower
+  #   container_name: watchtower
+  #   environment:
+  #     - WATCHTOWER_POLL_INTERVAL=60 # Poll every 60 seconds
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+
+  appservice:
+    image: kkumar42721/githubactionimage:latest
+    ports:
+      - "3000:8080"
+    
